@@ -2,20 +2,12 @@
 
 int main() {
     int arr[] = {3, 7, 1, 9, 4, 6};
-    int n = sizeof(arr) / sizeof(arr[0]);
 
-    for (int i = 0; i < n - 1; i++) {
-        void* addr_0 = &arr[i];
-        void* addr_1 = &arr[i + 1];
-
-        /* 바로 인접한 두 요소의 메모리 주소 */
-        printf("address of arr[%d]: %p\n", i, addr_0);
-        printf("address of arr[%d]: %p\n", i + 1, addr_1);
-
-        /* 두 요소의 주소 차 */
-        printf("(&arr[%d] - &arr[%d]) = %lld\n",
-               i, i + 1,
-               (unsigned long long)addr_1 - (unsigned long long)addr_0);
+    for (int i = 0; i < 5; i++) {
+        printf("address of arr[%d]: %p\n", i, (void*)&arr[i]);
+        printf("address of arr[%d+1]: %p\n", i, (void*)&arr[i + 1]);
+        printf("&(arr[%d]) - &(arr[%d+1]) = %ld\n", i, i + 1,
+               (char*)(&arr[i + 1]) - (char*)(&arr[i]));
         printf("\n");
     }
 
